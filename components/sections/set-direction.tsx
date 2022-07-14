@@ -1,6 +1,8 @@
 "use client";
 
+import FeatureCards from "../featureCards";
 import { Features } from "../features";
+import { Features2 } from "../featureSection";
 import { CustomRoadmapsIcon } from "../icons/features/set-directions-icons/custom-roadmaps";
 import { MultiTeamProjectsIcon } from "../icons/features/set-directions-icons/multi-team-projects";
 import { PersonalNotificationsIcon } from "../icons/features/set-directions-icons/personal-notifications";
@@ -10,7 +12,7 @@ import { TimelineViewIcon } from "../icons/features/set-directions-icons/timelin
 
 export const SetDirection = () => {
   return (
-    <Features color="0,225,244" colorDark="31,49,64">
+    <Features2 color="0,225,244" colorDark="31,49,64">
       <Features.Main
         title={<>Compliance & Reporting</>}
         image="img/six/2.png"
@@ -66,7 +68,7 @@ export const SetDirection = () => {
           },
         ]}
       />
-      <Features.Cards
+      <FeatureCards
         features={[
           {
             image: "img/six/2.png",
@@ -82,6 +84,6 @@ export const SetDirection = () => {
           },
         ]}
       />
-    </Features>
+    </Features2>
   );
 };

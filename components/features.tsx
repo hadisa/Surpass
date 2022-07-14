@@ -3,6 +3,7 @@
 import classNames from "classnames";
 import { Container } from "./container";
 import { useInView } from "react-intersection-observer";
+import { cn } from "../src/lib/utils";
 
 type FeaturesProps = {
   children: React.ReactNode;
@@ -36,11 +37,13 @@ export const Features = ({ children, color, colorDark }: FeaturesProps) => {
   );
 };
 
+
 type MainFeatureProps = {
   image: string;
   text: string;
   title: React.ReactNode;
   imageSize?: "small" | "large";
+  featureColor?: string; // Added for more customization
 };
 
 const MainFeature = ({
@@ -48,33 +51,105 @@ const MainFeature = ({
   text,
   title,
   imageSize = "small",
+  featureColor = "120, 120, 255", // Default purple-ish color
 }: MainFeatureProps) => {
   return (
-    <>
-      <div className="relative before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_50%_50%_at_center,rgba(var(--feature-color),0.1),transparent)]">
-        <Container
-          className={classNames(
-            "max-w-[90%] text-center",
-            imageSize === "small" ? "w-[78rem]" : "w-[102.4rem]"
-          )}
-        >
-          <h2 className="text-gradient mb-11 translate-y-[40%] pt-[12rem] text-center text-6xl [transition:transform_1000ms_cubic-bezier(0.3,_1.17,_0.55,_0.99)_0s] md:pt-0 md:text-8xl [.is-visible_&]:translate-y-0">
+    <section className="relative overflow-hidden py-20">
+      {/* Background glow */}
+      <div 
+        className="absolute inset-0 -z-10 opacity-20"
+        style={{
+          background: `radial-gradient(ellipse at center, rgba(${featureColor}, 0.4) 0%, transparent 70%)`,
+        }}
+      />
+      
+      {/* Animated grid pattern */}
+      <div className="absolute inset-0 -z-20 opacity-10 [background-image:linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]" />
+      
+      <div className="relative">
+        <div className={classNames(
+          "mx-auto text-center",
+          imageSize === "small" ? "mx-auto max-w-[120rem] px-8" : "mx-auto max-w-[120rem] px-8"
+          // imageSize === "small" ? "max-w-6xl" : "max-w-7xl"
+        )}>
+          {/* Animated title */}
+          <h2 className="text-gradient mb-16 translate-y-[40%] pt-12 text-center text-5xl font-bold tracking-tight transition-all duration-1000 ease-[cubic-bezier(0.3,1.17,0.55,0.99)] md:pt-0 md:text-7xl lg:text-8xl [.is-visible_&]:translate-y-0">
             {title}
           </h2>
-          <div className="relative z-10 rounded-[14px] backdrop-blur-[6px] before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(rgba(255,_255,_255,_0.3),_rgba(255,_255,_255,_0)_120%)] before:p-[1px] before:[mask:linear-gradient(black,_black)_content-box_content-box,_linear-gradient(black,_black)] before:[mask-composite:xor] after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[rgba(255,_255,_255,_0.15)] after:[mask:linear-gradient(black,transparent)]">
-            <img src={image} className="h-auto w-full" />
+          
+          {/* Enhanced image container with border animation */}
+          <div className="group relative z-10 mx-2 overflow-hidden rounded-2xl shadow-2xl transition-all duration-500 hover:shadow-[0_0_40px_-5px_rgba(var(--feature-color),0.3)] md:mx-0 md:rounded-3xl">
+            {/* Animated border */}
+            <div 
+              className="absolute inset-0 rounded-2xl p-[2px] md:rounded-3xl"
+              style={{
+                background: `linear-gradient(135deg, rgba(${featureColor}, 0.8), rgba(${featureColor}, 0.2))`,
+                mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                maskComposite: 'exclude',
+                WebkitMaskComposite: 'xor',
+              }}
+            />
+            
+            {/* Glass morphism effect */}
+            <div className="absolute inset-0 rounded-2xl bg-white/5 backdrop-blur-md md:rounded-3xl" />
+            
+            {/* Shine effect on hover */}
+            <div className="absolute inset-0 rounded-2xl opacity-0 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-100 md:rounded-3xl" 
+              style={{
+                background: `radial-gradient(ellipse at center, rgba(255,255,255,0.8) 0%, transparent 70%)`,
+              }}
+            />
+            
+            <img 
+              src={image} 
+              className="h-auto w-full scale-[1.01] transform rounded-2xl object-cover transition-transform duration-500 group-hover:scale-100 md:rounded-3xl" 
+              alt="Feature showcase"
+            />
           </div>
-        </Container>
+        </div>
+        
+        {/* Text content */}
+        <div className="mx-auto mt-20 max-w-7xl px-6 text-center md:px-0">
+          <p className="mx-auto text-xl pt-10 leading-relaxed text-white/80 md:text-3xl md:leading-relaxed">
+            {text} 
+          </p>
+          
+          {/* Animated separator */}
+          <div className="relative my-16 h-px overflow-hidden">
+            <div 
+              className="absolute inset-0 w-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
+              style={{
+                animation: 'shine 2s infinite',
+              }}
+            />
+          </div>
+        </div>
       </div>
-      <Container className="w-[78rem] max-w-[90%] text-center">
-        <p className="mx-auto my-16 text-2xl leading-tight text-white md:w-[80%] md:text-4xl">
-          {text}
-        </p>
-        <hr className="mb-[7.2rem] h-[1px] border-none bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.1)_50%,transparent)]" />
-      </Container>
-    </>
+      
+      {/* Floating particles */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white/10"
+            style={{
+              width: `${Math.random() * 4 + 1}px`,
+              height: `${Math.random() * 4 + 1}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animation: `float ${Math.random() * 10 + 10}s linear infinite`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </div>
+    </section>
   );
 };
+
+
+
+export default MainFeature;
 
 type FeatureGridProps = {
   features: {
@@ -102,37 +177,9 @@ const FeatureGrid = ({ features }: FeatureGridProps) => {
   );
 };
 
-type FeatureCardsProps = {
-  features: {
-    image: string;
-    imageClassName: string;
-    title: string;
-    text: string;
-  }[];
-};
 
-const FeatureCards = ({ features }: FeatureCardsProps) => {
-  return (
-    <Container>
-      <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
-        {features.map(({ title, text, image, imageClassName }) => (
-          <div
-            key={title}
-            className="relative aspect-[1.1/1] overflow-hidden rounded-[2.4rem] border border-transparent-white bg-[radial-gradient(ellipse_at_center,rgba(var(--feature-color),0.15),transparent)] py-6 px-8 before:pointer-events-none before:absolute before:inset-0 before:bg-glass-gradient md:rounded-[4.8rem] md:p-14"
-          >
-            <h3 className="mb-2 text-2xl text-white">{title}</h3>
-            <p className="max-w-[31rem] text-md text-primary-text">{text}</p>
-            <img
-              className={classNames("absolute max-w-none", imageClassName)}
-              src={image}
-            />
-          </div>
-        ))}
-      </div>
-    </Container>
-  );
-};
+
+
 
 Features.Main = MainFeature;
 Features.Grid = FeatureGrid;
-Features.Cards = FeatureCards;

@@ -26,7 +26,7 @@ export const HomePageHero = () => (
       effortlessly.
     </HeroSubtitle>
     <Button
-      className="translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:600ms]"
+      className="translate-y-[-1rem] animate-fade-in opacity-0 text-white [--animation-delay:600ms]"
       href="/"
       variant="primary"
       size="large"

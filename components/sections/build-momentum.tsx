@@ -1,6 +1,7 @@
 "use client";
 
 import { Features } from "../features";
+import { Features2 } from "../featureSection";
 import { AutomaticTrackingIcon } from "../icons/features/build-momentum-icons/automatic-tracking";
 import { BePreparedIcon } from "../icons/features/build-momentum-icons/be-prepared";
 import { FullyConfigurableIcon } from "../icons/features/build-momentum-icons/fully-configurable";
@@ -10,7 +11,7 @@ import { ScopeCreepIcon } from "../icons/features/build-momentum-icons/scope-cre
 
 export const BuildMomentum = () => {
   return (
-    <Features color="40,87,255" colorDark="48,58,117">
+    <Features2 color="40,87,255" colorDark="48,58,117">
       <Features.Main
         title={<>Task Management</>}
         image="img/six/4.png"
@@ -51,6 +52,6 @@ export const BuildMomentum = () => {
           },
         ]}
       />
-    </Features>
+    </Features2>
   );
 };

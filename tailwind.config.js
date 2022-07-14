@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -7,7 +8,19 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: '"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu, Cantarell,"Open Sans","Helvetica Neue",sans-serif',
+      sans: [
+        "SF Pro Display",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        '"Segoe UI"',
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        '"Open Sans"',
+        '"Helvetica Neue"',
+        "sans-serif",
+      ],
     },
     fontSize: {
       xs: "1.3rem",
@@ -32,22 +45,6 @@ module.exports = {
       grey: "#858699",
       "grey-dark": "#222326",
       "primary-text": "#b4bcd0",
-    },
-    backgroundImage: {
-      "primary-gradient":
-        "linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%)",
-      "page-gradient":
-        "radial-gradient(ellipse 50% 80% at 20% 40%,rgba(93,52,221,0.1),transparent), radial-gradient(ellipse 50% 80% at 80% 50%,rgba(120,119,198,0.15),transparent)",
-      "hero-gradient":
-        "radial-gradient(ellipse 50% 80% at 20% 40%,rgba(93,52,221,0.1),transparent), radial-gradient(ellipse 50% 80% at 80% 50%,rgba(120,119,198,0.15),transparent)",
-      "hero-glow":
-        "conic-gradient(from 230.29deg at 51.63% 52.16%, rgb(36, 0, 255) 0deg, rgb(0, 135, 255) 67.5deg, rgb(108, 39, 157) 198.75deg, rgb(24, 38, 163) 251.25deg, rgb(54, 103, 196) 301.88deg, rgb(105, 30, 255) 360deg)",
-      "glow-lines":
-        "linear-gradient(var(--direction),#9d9bf2 0.43%,#7877c6 14.11%,rgba(120,119,198,0) 62.95%)",
-      "radial-faded":
-        "radial-gradient(circle at bottom center,var(--color),transparent 70%)",
-      "glass-gradient":
-        "linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 100%)",
     },
     boxShadow: {
       primary: "rgb(80 63 205 / 50%) 0px 1px 40px",
@@ -76,6 +73,10 @@ module.exports = {
       0: "0ms",
     },
     keyframes: {
+      floatHorizontal: {
+        "0%": { transform: "translateX(-100%)" },
+        "100%": { transform: "translateX(100vw)" },
+      },
       "fade-in": {
         from: { opacity: 0, transform: "translateY(-10px)" },
         to: { opacity: 1, transform: "none" },
@@ -86,6 +87,15 @@ module.exports = {
         "60%": { transform: "none" },
         "100%": { transform: "none" },
       },
+      flicker: {
+        "0%, 100%": { opacity: 1 },
+        "20%, 60%": { opacity: 0.8 },
+        "40%, 80%": { opacity: 0.5 },
+      },
+      float: {
+        "0%, 100%": { transform: "translateY(0) translateX(0)" },
+        "50%": { transform: "translateY(-20px) translateX(10px)" },
+      },
       "image-glow": {
         "0%": {
           opacity: 0,
@@ -95,40 +105,13 @@ module.exports = {
           opacity: 1,
           "animation-timing-function": "cubic-bezier(0.12,0.01,0.08,0.99)",
         },
-        "100%": {
-          opacity: 0.2,
-        },
+        "100%": { opacity: 0.2 },
       },
       "sketch-lines": {
         "0%": { "stroke-dashoffset": 1 },
         "50%": { "stroke-dashoffset": 0 },
         "99%": { "stroke-dashoffset": 0 },
-        "100%": { visiblity: "hidden" },
-      },
-      "glow-line-horizontal": {
-        "0%": { opacity: 0, transform: "translateX(0)" },
-        "5%": { opacity: 1, transform: "translateX(0)" },
-        "90%": { opacity: 1 },
-        "100%": { opacity: 0, transform: "translateX(min(60vw, 45rem))" },
-      },
-      "glow-line-vertical": {
-        "0%": { opacity: 0, transform: "translateY(0)" },
-        "5%": { opacity: 1, transform: "translateY(0)" },
-        "90%": { opacity: 1 },
-        "100%": { opacity: 0, transform: "translateY(min(21vw, 45rem))" },
-      },
-      bolt: {
-        "0%, 9%, 11%, 100%": {
-          fill: "transparent",
-        },
-        "10%": {
-          fill: "white",
-        },
-      },
-      bounce: {
-        "50%": {
-          transform: "scale(0.98)",
-        },
+        "100%": { visibility: "hidden" },
       },
     },
     animation: {
@@ -136,12 +119,44 @@ module.exports = {
       "image-rotate": "image-rotate 1400ms ease forwards",
       "image-glow": "image-glow 4100ms 600ms ease-out forwards",
       "sketch-lines": "sketch-lines 1200ms ease-out forwards",
-      "glow-line-horizontal":
-        "glow-line-horizontal var(--animation-duration) ease-in forwards",
-      "glow-line-vertical":
-        "glow-line-vertical var(--animation-duration) ease-in forwards",
-      bolt: "bolt 2250ms calc(var(--index) * 20ms) linear infinite",
-      bounce: "240ms ease 0s 1 running bounce",
+      "float-1": "float 6s ease-in-out infinite",
+      "float-2": "float 8s ease-in-out infinite",
+      "float-3": "float 10s ease-in-out infinite",
+      "float-4": "float 12s ease-in-out infinite",
+      flicker: "flicker 1s ease-in 1",
+      "float-horizontal": "floatHorizontal 8s linear infinite",
+    },
+    extend: {
+      backgroundImage: {
+        "primary-gradient":
+          "linear-gradient(135deg, #0f0f0f, #1a1a2e, #3a3a52)",
+        "page-gradient":
+          "radial-gradient(ellipse 50% 80% at 20% 40%,rgba(93,52,221,0.1),transparent), radial-gradient(ellipse 50% 80% at 80% 50%,rgba(120,119,198,0.15),transparent)",
+        "hero-gradient":
+          "radial-gradient(ellipse 50% 80% at 20% 40%,rgba(93,52,221,0.1),transparent), radial-gradient(ellipse 50% 80% at 80% 50%,rgba(120,119,198,0.15),transparent)",
+        "hero-glow":
+          "conic-gradient(from 230.29deg at 51.63% 52.16%, rgb(36, 0, 255) 0deg, rgb(0, 135, 255) 67.5deg, rgb(108, 39, 157) 198.75deg, rgb(24, 38, 163) 251.25deg, rgb(54, 103, 196) 301.88deg, rgb(105, 30, 255) 360deg)",
+        "glow-lines":
+          "linear-gradient(var(--direction),#9d9bf2 0.43%,#7877c6 14.11%,rgba(120,119,198,0) 62.95%)",
+        "radial-faded":
+          "radial-gradient(circle at bottom center,var(--color),transparent 70%)",
+        "glass-gradient":
+          "linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 100%)",
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      colors: {
+        border: "hsl(var(--background))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
     },
   },
   plugins: [],

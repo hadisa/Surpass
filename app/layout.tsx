@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div>
           <Header />
-          <main className="bg-page-gradient pt-navigation-height">
+          <main className="bg-primary-gradient pt-navigation-height">
             {children}
           </main>
           <Footer />

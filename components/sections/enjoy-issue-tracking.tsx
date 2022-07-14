@@ -1,6 +1,9 @@
 "use client";
 
+import { Container } from "../container";
+import FeatureCards from "../featureCards";
 import { Features } from "../features";
+import { Features2 } from "../featureSection";
 import {
   AutomatedBacklogIcon,
   CustomViewsIcon,
@@ -12,7 +15,7 @@ import {
 
 export const EnjoyIssueTracking = () => {
   return (
-    <Features color="194,97,254" colorDark="53,42,79">
+    <Features2 color="194,97,254" colorDark="53,42,79">
       <Features.Main
         title={
           <>
@@ -58,7 +61,7 @@ export const EnjoyIssueTracking = () => {
           },
         ]}
       />
-      <Features.Cards
+      <FeatureCards
         features={[
           {
             image: "/img/six/7.png",
@@ -75,6 +78,6 @@ export const EnjoyIssueTracking = () => {
           },
         ]}
       />
-    </Features>
+    </Features2>
   );
 };
