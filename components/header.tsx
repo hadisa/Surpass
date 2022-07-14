@@ -33,7 +33,7 @@ export const Header = () => {
     <header className="fixed left-0 top-0 z-10 w-full border-b bg-gray-100 border-transparent-white backdrop-blur-[12px]">
       <Container className="flex h-navigation-height">
         <Link href="/" className="flex items-center text-lg text-white">
-          <Logo className="mr-4 h-[1.8rem] w-[1.8rem] " /> Taskly
+          <Logo className="mr-4 h-10 w-10 " /> Taskly
         </Link>
         <div
           className={classNames(
@@ -57,19 +57,19 @@ export const Header = () => {
               )}
             >
               <li className="text-white">
-                <Link href="/"  >Features</Link>
+                <Link href="/features"  >Features</Link>
               </li>
               <li className="md:hidden lg:block text-white">
-                <Link href="/">Customers</Link>
+                <Link href="/customers">Customers</Link>
               </li>
               <li className="md:hidden lg:block text-white">
-                <Link href="/">Integrations</Link>
+                <Link href="/integrations">Integrations</Link>
               </li>
               <li className="text-white">
-                <Link href="/">Pricing</Link>
+                <Link href="/pricing">Pricing</Link>
               </li>
               <li className="text-white">
-                <Link href="/">Docs</Link>
+                <Link href="/docs">Docs</Link>
               </li>
             </ul>
           </nav>

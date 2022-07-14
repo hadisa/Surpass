@@ -1,16 +1,90 @@
 export const Logo = ({ className }: { className?: string }) => (
   <svg
-    width="64"
-    height="64"
-    viewBox="0 0 64 64"
-    fill="#EEEFFC"
-    color="#EEEFFC"
-    aria-label="Linear Logotype"
+    width="200"
+    height="200"
+    viewBox="0 0 200 200"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
     className={className}
+
   >
-    <path d="M0.403013 37.3991L26.6009 63.597C13.2225 61.3356 2.66442 50.7775 0.403013 37.3991Z"></path>
-    <path d="M0 30.2868L33.7132 64C35.7182 63.8929 37.6742 63.6013 39.5645 63.142L0.85799 24.4355C0.398679 26.3259 0.10713 28.2818 0 30.2868Z"></path>
-    <path d="M2.53593 19.4042L44.5958 61.4641C46.1277 60.8066 47.598 60.0331 48.9956 59.1546L4.84543 15.0044C3.96691 16.402 3.19339 17.8723 2.53593 19.4042Z"></path>
-    <path d="M7.69501 11.1447C13.5677 4.32093 22.2677 0 31.9769 0C49.6628 0 64 14.3372 64 32.0231C64 41.7323 59.6791 50.4323 52.8553 56.305L7.69501 11.1447Z"></path>
+    <circle cx="100" cy="100" r="90" fill="#4B6DF3" fill-opacity="0.1" />
+
+    <circle
+      cx="100"
+      cy="100"
+      r="60"
+      fill="white"
+      stroke="#4B6DF3"
+      stroke-width="4"
+    />
+
+    <path
+      d="M100 100 L100 60"
+      stroke="#4B6DF3"
+      stroke-width="6"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M100 100 L130 70"
+      stroke="#4B6DF3"
+      stroke-width="6"
+      stroke-linecap="round"
+    />
+    <path
+      d="M125 65 L140 80 L160 50"
+      stroke="#4B6DF3"
+      stroke-width="6"
+      stroke-linecap="round"
+    />
+
+    <rect
+      x="70"
+      y="120"
+      width="60"
+      height="40"
+      rx="4"
+      fill="white"
+      stroke="#4B6DF3"
+      stroke-width="3"
+    />
+    <rect
+      x="70"
+      y="120"
+      width="60"
+      height="15"
+      fill="#4B6DF3"
+      fill-opacity="0.2"
+    />
+    <line
+      x1="85"
+      y1="140"
+      x2="115"
+      y2="140"
+      stroke="#4B6DF3"
+      stroke-width="2"
+    />
+    <line
+      x1="85"
+      y1="150"
+      x2="135"
+      y2="150"
+      stroke="#4B6DF3"
+      stroke-width="2"
+    />
+
+    <text
+      x="100"
+      y="190"
+      font-family="Arial"
+      font-size="24"
+      font-weight="bold"
+      text-anchor="middle"
+      fill="#4B6DF3"
+
+    >
+      Taskly
+    </text>
   </svg>
 );

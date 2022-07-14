@@ -56,7 +56,7 @@ export const Footer = () => (
         {/* Brand section */}
         <div className="flex flex-col items-start lg:max-w-xs">
           <div className="mb-6 flex items-center text-white">
-            <Logo className="text-blue-400 mr-3 h-6 w-6" />
+            <Logo className="text-blue-400 mr-3 h-auto w-full" />
             <h1 className="text-7xl text-white">Taskly</h1>
           </div>
 
